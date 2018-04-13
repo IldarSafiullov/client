@@ -2,16 +2,17 @@ package org.lab2;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.lab2.authorization.AuthForm;
 import org.lab2.authorization.User;
 import java.io.*;
 import java.net.Socket;
 
-public  class Main {
+
+public  class Client {
     static DataOutputStream dout;
 
     public static void main(String[] args) throws IOException {
         run();
-
     }
 
     public static void run() throws IOException{
@@ -19,30 +20,38 @@ public  class Main {
         dout = new DataOutputStream(socket.getOutputStream());
         User user = new User("user", "Ildar", "Saf", "password");
 
+        AuthForm authForm = new AuthForm("SIGN_UP", user);
+        String authType = authForm.getAuthType();
+
+        if (authType == "SIGN_UP"){
+
+        }else if (authType == "SIGN_IN"){
+
+        }else {
+            System.out.println("Error");
+        }
+
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        String json = gson.toJson(user);
-        System.out.println(json);
-
+        String json = gson.toJson(authForm);
         dout.writeUTF(json);
 
     }
 
-    public void sendPassword(String password) throws IOException {
-        dout.writeUTF(password);
-    }
 
-    public void sendData(String s){
+
+
+
+/*    public void sendData(String s){
         try {
             dout.writeUTF(s);
             dout.flush();
         } catch (Exception e) {
             e.printStackTrace();}
-    }
+    }*/
 
-
-/*    public Main(String name) {
+/*    public Client(String name) {
         super(name);
         setLayout(new FlowLayout());
         setSize(300, 300);
