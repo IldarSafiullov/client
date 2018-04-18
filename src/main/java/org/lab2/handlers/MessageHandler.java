@@ -22,9 +22,6 @@ public class MessageHandler {
         dout.writeUTF(lastName);
     }
 
-    public void sendMessage(User user, String message) throws IOException {
-        dout.writeUTF(message);
-        dout.flush();
-    }
+
 
 }

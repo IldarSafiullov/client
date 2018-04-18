@@ -3,29 +3,18 @@ package org.lab2.authorization;
 
 public class User {
 
-    private final String login;
-    private final String firstName;
-    private final String lastName;
+    private final String name;
     private final String password;
 
-    public User(String login, String firstName, String lastName, String password) {
-        this.login = login;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User( String name, String password) {
+        this.name = name;
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
-    }
 
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getName() {
+        return name;
     }
 
     public String getPassword() {
@@ -35,9 +24,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
